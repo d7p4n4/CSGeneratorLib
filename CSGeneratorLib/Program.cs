@@ -37,6 +37,7 @@ namespace CSGeneratorLib
                  Directory.GetFiles(_inpath, "*.xml", SearchOption.TopDirectoryOnly);
 
             CSPersistentGeneratorLib.EntityGenerate.entityGenerateMethods(files, _defaultNamespace, _outpath, templatesFolder);
+            CSRestApiGeneratorLib.Program.MainMethod(_inpath, _outpath, _defaultNamespace, templatesFolder);
 
             foreach (var _file in files)
             {
@@ -46,6 +47,7 @@ namespace CSGeneratorLib
                 Ac4yClass ac4y = DeserialiseMethod.deser(_file);
 
                 GenerateClass.generateClass(ac4y, _outpath, files, _defaultNamespace, templatesFolder);
+                
             }
         }
     }
